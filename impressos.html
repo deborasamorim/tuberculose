@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressos - Gerência Técnica de Tuberculose</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Globais Unificados */
+        :root {
+            --primary-green: #2ecc71;
+            --primary-blue: #3498db;
+            --bg-dark: #0f172a;
+            --panel-bg: rgba(255, 255, 255, 0.03);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header e Vídeo Padrão */
+        .main-header {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .header-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand h1 { margin: 0; font-size: 2rem; }
+        .brand p { margin: 5px 0; color: #ccc; }
+        .brand span { color: var(--primary-green); font-weight: bold; }
+
+        /* Menu de Navegação Unificado */
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: 0.3s;
+            padding: 5px 10px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            opacity: 1;
+            border-bottom: 2px solid var(--primary-green);
+        }
+
+        /* Campo de Busca */
+        .search-container { margin: 30px 0; }
+        .search-field {
+            width: 100%;
+            padding: 15px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-field:focus { border-color: var(--primary-green); }
+
+        /* Lista de Documentos (Grid) */
+        .doc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .doc-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .doc-item:hover {
+            border-color: var(--primary-green);
+            background: rgba(46, 204, 113, 0.05);
+        }
+
+        .doc-info h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .doc-info p {
+            margin: 5px 0 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .btn-download {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--primary-green);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover {
+            background: var(--primary-green);
+            color: #000;
+        }
+
+        .section-header {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-green);
+            padding-left: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            border-top: 1px solid var(--border-light);
+            margin-top: 60px;
+            background: var(--panel-bg);
+        }
+
+        .footer-logo img { max-width: 100px; height: auto; margin-bottom: 20px; }
+        .footer p { color: var(--text-muted); font-size: 0.85rem; margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <video autoplay muted loop playsinline class="header-video">
+        <source src="pulmao2.mp4" type="video/mp4">
+    </video>
+    <div class="header-overlay"></div>
+
+    <div class="header-content container">
+        <div class="brand">
+            <h1>Impressos Oficiais</h1>
+            <p>Gerência Técnica Municipal de Tuberculose - <span>Campo Grande, MS</span></p>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">Início</a>
+            <a href="impressos.html" class="active">Impressos</a>
+            <a href="contato.html">Contato Técnico</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-field" placeholder="Buscar impresso por nome ou finalidade...">
+    </div>
+
+    <section>
+        <h2 class="section-header">Modelos para Download e Impressão</h2>
+        <div class="doc-list">
+            
+            <div class="doc-item" data-title="notificacao sinan ficha individual">
+                <div class="doc-info">
+                    <h3>Ficha de Notificação de Tuberculose</h3>
+                    <p>Ficha individual de notificação (SINAN).</p>
+                </div>
+                <a href="fichatb.pdf" class="btn-download">PDF</a>
+            </div>
+
+            <div class="doc-item" data-title="investigacao contatos busca ativa">
+                <div class="doc-info">
+                    <h3>Investigação de Contatos</h3>
+                    <p>Controle de comunicantes e busca ativa.</p>
+                </div>
+                <a href="contatostb.pdf" class="btn-download">PDF</a>
+            </div>
+
+            <div class="doc-item" data-title="transferencia interunidades fluxo">
+                <div class="doc-info">
+                    <h3>Ficha de Transferência</h3>
+                    <p>Continuidade em outra unidade de saúde.</p>
+                </div>
+                <a href="transferenciatb.pdf" class="btn-download">PDF</a>
+            </div>
+
+            <div class="doc-item" data-title="sao juliao encaminhamento hospitalar">
+                <div class="doc-info">
+                    <h3>Encaminhamento São Julião</h3>
+                    <p>Referência para internação especializada.</p>
+                </div>
+                <a href="encaminhamentohsj.pdf" class="btn-download">PDF</a>
+            </div>
+
+            <div class="doc-item" data-title="gal laboratorio requisicao exames">
+                <div class="doc-info">
+                    <h3>Ficha GAL - Tuberculose</h3>
+                    <p>Requisição de exames laboratoriais.</p>
+                </div>
+                <a href="galtb.pdf" class="btn-download">PDF</a>
+            </div>
+
+            <div class="doc-item" data-title="tdo tratamento supervisionado diretamente observado">
+                <div class="doc-info">
+                    <h3>Ficha de TDO</h3>
+                    <p>Registro de medicação assistida diariamente.</p>
+                </div>
+                <a href="tdo.pdf" class="btn-download">PDF</a>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="logocve.png" alt="Logos Institucionais">
+    </div>
+    <p>Gerência Técnica Municipal de Tuberculose | Vigilância Epidemiológica | SESAU CG - MS</p>
+    <p style="font-size: 0.7rem; opacity: 0.5;">© 2026 Campo Grande - MS</p>
+</footer>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const items = document.querySelectorAll('.doc-item');
+
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        items.forEach(item => {
+            const searchData = item.getAttribute('data-title').toLowerCase();
+            const text = item.querySelector('h3').textContent.toLowerCase();
+            if(searchData.includes(term) || text.includes(term)) {
+                item.style.display = "flex";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

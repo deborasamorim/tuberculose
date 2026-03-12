@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Gerência Técnica Municipal de Tuberculose</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Globais (Padrão Index) */
+        :root {
+            --primary-green: #2ecc71;
+            --primary-blue: #3498db;
+            --bg-dark: #0f172a;
+            --panel-bg: rgba(255, 255, 255, 0.03);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header e Vídeo (Igual à Index) */
+        .main-header {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .header-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand h1 { margin: 0; font-size: 2rem; }
+        .brand p { margin: 5px 0; color: #ccc; }
+        .brand span { color: var(--primary-green); font-weight: bold; }
+
+        /* MENU IGUAL À INDEX */
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: 0.3s;
+            padding: 5px 10px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            opacity: 1;
+            border-bottom: 2px solid var(--primary-green);
+        }
+
+        /* Conteúdo de Contato */
+        .contact-card {
+            background: var(--panel-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            padding: 40px;
+            margin-top: -50px; /* Sobrepõe levemente o header para design moderno */
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .contact-hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-icon {
+            font-size: 1.5rem;
+            background: rgba(46, 204, 113, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: var(--primary-green);
+        }
+
+        .info-content h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+        }
+
+        .info-content p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .staff-item {
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .staff-name { display: block; font-weight: 700; font-size: 1.1rem; }
+        .staff-role { display: block; color: var(--text-muted); font-size: 0.9rem; }
+
+        .btn-email {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: var(--primary-green);
+            color: #000;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-email:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        .alert-box {
+            margin-top: 40px;
+            background: rgba(241, 196, 15, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #f1c40f;
+            color: #f1c40f;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            border-top: 1px solid var(--border-light);
+            margin-top: 40px;
+        }
+
+        .footer-logo img { max-width: 100px; height: auto; margin-bottom: 20px; }
+        .footer p { color: var(--text-muted); font-size: 0.85rem; margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <video autoplay muted loop playsinline class="header-video">
+        <source src="pulmao.mp4" type="video/mp4">
+    </video>
+    <div class="header-overlay"></div>
+
+    <div class="header-content container">
+        <div class="brand">
+            <h1>Gerência Técnica Municipal de Tuberculose</h1>
+            <p>Secretaria Municipal de Saúde - <span>Campo Grande, MS</span></p>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">Início</a>
+            <a href="impressos.html">Impressos</a>
+            <a href="contato.html" class="active">Contato Técnico</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="contact-card">
+        <div class="contact-hero">
+            <h2>Canais de Atendimento</h2>
+            <p style="color: var(--text-muted);">Suporte técnico e epidemiológico para profissionais de saúde.</p>
+        </div>
+
+        <div class="info-row">
+            <div class="info-icon">👤</div>
+            <div class="info-content">
+                <h3>Equipe Responsável</h3>
+                <div style="margin-top: 15px;">
+                    <div class="staff-item">
+                        <span class="staff-name">Enfa. Ana Pricilla Delphina Leite</span>
+                        <span class="staff-role">Gerência Técnica - Tuberculose</span>
+                    </div>
+                    <div class="staff-item">
+                        <span class="staff-name">Débora de Souza Amorim Monteiro</span>
+                        <span class="staff-role">Apoio Técnico - Tuberculose</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+                <h3>Endereço Institucional</h3>
+                <p>Secretaria Municipal de Saúde (SESAU) - Campo Grande, MS</p>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-icon">📞</div>
+            <div class="info-content">
+                <h3>Telefone de Contato</h3>
+                <p>(67) 2020-1586</p>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-icon">✉️</div>
+            <div class="info-content">
+                <h3>Correio Eletrônico</h3>
+                <p>tbhansensesau@gmail.com</p>
+                <a href="mailto:tbhansensesau@gmail.com" class="btn-email">Enviar Mensagem Agora</a>
+            </div>
+        </div>
+
+        <div class="alert-box">
+            <p><strong>Horário de Funcionamento:</strong> Segunda a Sexta, das 07:00 às 11:00 e das 13:00 às 17:00.</p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="logocve.png" alt="Logos Institucionais">
+    </div>
+    <p>Gerência Técnica Municipal de Tuberculose | Vigilância Epidemiológica | SESAU CG - MS</p>
+    <p style="font-size: 0.7rem; opacity: 0.5;">© 2026 Campo Grande - MS</p>
+</footer>
+
+</body>
+</html>
