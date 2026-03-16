@@ -121,45 +121,49 @@
             box-sizing: border-box;
         }
 
-        /* Grid de Painéis */
+        /* Grid de Painéis - CORRIGIDO */
         .grid-panels {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
             margin-bottom: 30px;
         }
 
         .panel {
-            padding: 25px;
+            padding: 20px;
             background: var(--panel-bg);
             border-radius: 12px;
             border: 1px solid var(--border-light);
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .panel h2 {
             margin-top: 0;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--primary-green);
         }
 
         .panel p {
             color: #ddd;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
         }
 
         .panel-link {
             display: inline-block;
-            padding: 10px 18px;
+            padding: 10px 16px;
+            font-size: 0.85rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--primary-green);
             border-radius: 6px;
             text-decoration: none;
             color: #fff;
-            font-size: 0.85rem;
             transition: 0.3s;
             cursor: pointer;
+            text-align: center;
         }
 
         .panel-link:hover {
@@ -167,29 +171,26 @@
             color: #000;
         }
 
-        /* Fluxograma */
-        .fluxo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 0;
+        /* Específicos para os cards largos */
+        .full-width {
+            grid-column: 1 / -1;
         }
 
-        .fluxo-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 10px;
+        /* Select e Date */
+        select.search-field {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='18px' height='18px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 40px;
         }
 
-        .fluxo-seta {
-            font-size: 1.5rem;
-            color: #444;
-            margin-bottom: 10px;
+        select.search-field option {
+            background-color: #1e293b;
+            color: #fff;
+        }
+
+        input[type="date"].search-field {
+            color-scheme: dark;
         }
 
         /* FAQ Section */
@@ -241,43 +242,18 @@
             margin-top: 60px;
         }
 
-        .footer-logo img {
-            max-width: 120px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .footer p {
-            color: #94a3b8;
-            margin: 5px 0;
-            font-size: 0.85rem;
-        }
-
-        .text-blue {
-            color: var(--primary-blue) !important;
-        }
-
-        .bg-blue {
-            border-color: var(--primary-blue) !important;
-        }
-
-        /* --- ESTILIZAÇÃO DA FRASE COM EFEITO DE BRILHO --- */
         .frase-campanha {
             font-size: 1.3rem;
-            /* Aumentei um pouco para dar mais destaque */
             font-weight: 700;
             color: #fff;
-            /* Cor branca para o texto base, o brilho dará a cor */
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            position: relative;
             display: inline-block;
-            /* Para o brilho não ocupar a largura toda */
             padding: 5px 10px;
+            animation: pulsarBrilho 3s infinite alternate;
         }
 
-        /* O "span" com a data não deve ter brilho forte */
         .frase-campanha span {
             display: block;
             font-size: 0.85rem;
@@ -285,44 +261,22 @@
             color: #94a3b8;
             margin-top: 8px;
             text-transform: none;
-            text-shadow: none;
-            /* Remove o brilho da data */
         }
 
-        /* A CLASSE DO EFEITO DE BRILHO SUAVE */
-        .efeito-brilho {
-            color: #fff;
-            text-align: center;
-            /* Camadas de sombra para criar o efeito de "glow" verde */
-            text-shadow:
-                0 0 5px rgba(46, 204, 113, 0.6),
-                /* Brilho interno suave (Verde) */
-                0 0 10px rgba(46, 204, 113, 0.4),
-                /* Brilho médio (Verde) */
-                0 0 20px rgba(255, 255, 255, 0.2);
-            /* Brilho externo branco difuso */
-
-            /* Adiciona uma animação pulsante suave para chamar atenção */
-            animation: pulsarBrilho 3s infinite alternate;
-        }
-
-        /* ANIMAÇÃO PARA O BRILHO PULSAR SUAVEMENTE */
         @keyframes pulsarBrilho {
-            0% {
-                text-shadow:
-                    0 0 5px rgba(46, 204, 113, 0.6),
-                    0 0 10px rgba(46, 204, 113, 0.4),
-                    0 0 20px rgba(255, 255, 255, 0.2);
-            }
-
-            100% {
-                text-shadow:
-                    0 0 8px rgba(46, 204, 113, 0.8),
-                    /* Brilho fica ligeiramente mais forte */
-                    0 0 15px rgba(46, 204, 113, 0.6),
-                    0 0 30px rgba(46, 204, 113, 0.3);
-            }
+            0% { text-shadow: 0 0 5px rgba(46, 204, 113, 0.6), 0 0 10px rgba(46, 204, 113, 0.4); }
+            100% { text-shadow: 0 0 8px rgba(46, 204, 113, 0.8), 0 0 20px rgba(46, 204, 113, 0.6); }
         }
+
+        /* Staff Info no Monitoramento */
+        .staff-item {
+            border-left: 3px solid var(--primary-green);
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+        .staff-role { display: block; font-size: 0.7rem; color: #94a3b8; }
+        .staff-name { font-weight: bold; color: #fff; }
+
     </style>
 </head>
 
@@ -341,6 +295,7 @@
             <nav class="nav-menu">
                 <a href="index.html" class="active">Início</a>
                 <a href="impressos.html">Impressos</a>
+                <a href="dashboard.html">Dashboard Tuberculose</a>
                 <a href="contato.html">Contato Técnico</a>
             </nav>
         </div>
@@ -353,40 +308,13 @@
         </div>
 
         <section class="grid-panels">
-            <div class="panel"
-                style="grid-column: 1 / -1; border: 2px solid var(--primary-green); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+            <div class="panel full-width" style="border: 2px solid var(--primary-green); flex-direction: row; align-items: center; flex-wrap: wrap;">
                 <div style="flex: 1; min-width: 300px;">
-                    <h2 style="color: var(--primary-green); margin-bottom: 10px;">🗓️ Março: Mês de Combate à
-                        Tuberculose</h2>
-                    <p>Período intensivo de busca ativa de sintomáticos respiratórios. Ajude a quebrar a cadeia de
-                        transmissão.</p>
+                    <h2 style="color: var(--primary-green); margin-bottom: 10px;">🗓️ Março: Mês de Combate à Tuberculose</h2>
+                    <p>Período intensivo de busca ativa de sintomáticos respiratórios. Ajude a quebrar a cadeia de transmissão.</p>
                 </div>
-                <a href="guiarapidotb.pdf" class="panel-link"
-                    style="background: var(--primary-green); color: #000; font-weight: bold;">Guia Rápido
-                    Profissional</a>
+                <a href="guiarapidotb.pdf" class="panel-link" style="background: var(--primary-green); color: #000; font-weight: bold;">Guia Rápido Profissional</a>
             </div>
-
-            <section class="panel" style="border-left: 5px solid #e74c3c; grid-column: 1 / -1;">
-                <h2 style="color: #e74c3c;">🔍 Fluxograma de Diagnóstico Rápido (TRM-TB)</h2>
-                <div class="fluxo-container">
-                    <div class="fluxo-box"><strong>Sintomático Respiratório</strong><br><span>Tosse ≥ 3 semanas</span>
-                    </div>
-                    <div class="fluxo-seta">↓</div>
-                    <div class="fluxo-box" style="border-color: var(--primary-blue);"><strong>Solicitar TRM-TB + Cultura
-                            + HIV</strong></div>
-                    <div class="fluxo-seta">↓</div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
-                        <div class="fluxo-box" style="border-color: var(--primary-green);"><strong
-                                style="color: var(--primary-green);">Detectável</strong>
-                            <p>Tratamento IMEDIATO.</p>
-                        </div>
-                        <div class="fluxo-box" style="border-color: #e74c3c;"><strong style="color: #e74c3c;">Não
-                                Detectável</strong>
-                            <p>Avaliar Raio-X.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <div class="panel" style="border-left: 5px solid #9b59b6;">
                 <h2 style="color: #9b59b6;">Impressos e Formulários</h2>
@@ -400,15 +328,58 @@
                 <a href="manualtb.pdf" target="_blank" class="panel-link">Abrir Manual →</a>
             </div>
 
-            <section class="panel bg-blue" style="grid-column: 1 / -1; border: 1px dashed #f1c40f;">
-                <h2 class="text-blue">Calculadora de Monitoramento</h2>
-                <p>Insira a data da 1ª dose para gerar as datas de controle:</p>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <input type="date" id="dataInicio" class="search-field" style="width: auto; color-scheme: dark;">
-                    <button onclick="calcularDatas()" class="panel-link"
-                        style="background: var(--primary-blue); color: #fff;">Calcular Esquema</button>
+            <div class="panel full-width" style="border: 1px dashed var(--primary-blue);">
+                <h2 style="color: var(--primary-blue);">Calculadora de Monitoramento e Progresso</h2>
+                <p>Insira a data da 1ª dose para visualizar o cronograma e o progresso do tratamento:</p>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center; margin-bottom: 20px;">
+                    <input type="date" id="dataInicio" class="search-field" style="width: auto;">
+                    <button onclick="gerarPainelMonitoramento()" class="panel-link" style="background: var(--primary-blue); border-color: var(--primary-blue);">Gerar Monitoramento</button>
+                    <span style="font-size: 0.75rem; color: var(--manual-gold); opacity: 0.8;">⚠️ Simulação de apoio técnico.</span>
                 </div>
-            </section>
+
+                <div id="resultadoMonitoramento" style="display: none; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span style="font-size: 0.9rem; font-weight: 600;">Progresso do Tratamento</span>
+                        <span id="porcentagemTexto" style="color: var(--primary-green); font-weight: bold;">0%</span>
+                    </div>
+                    <div style="width: 100%; height: 12px; background: #1e293b; border-radius: 10px; overflow: hidden; margin-bottom: 20px;">
+                        <div id="barraProgresso" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary-blue), var(--primary-green)); transition: width 1s ease;"></div>
+                    </div>
+                    <div id="datasCronograma" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;"></div>
+                </div>
+            </div>
+
+            <div class="panel full-width" style="border-left: 5px solid var(--primary-green); background: rgba(46, 204, 113, 0.02);">
+                <h2 style="color: var(--primary-green);">💊 Calculadora de Dose por Peso e Idade</h2>
+                <p>Cálculo baseado no Manual de Recomendações (Ministério da Saúde):</p>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center; margin-bottom: 20px;">
+                    <div style="display: flex; flex-direction: column;">
+                        <label style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px;">Faixa Etária:</label>
+                        <select id="faixaEtaria" class="search-field" style="width: 250px;">
+                            <option value="adulto">Adulto / Adolescente (>10 anos)</option>
+                            <option value="crianca">Criança (até 10 anos)</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <label style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px;">Peso (kg):</label>
+                        <input type="number" id="pesoPaciente" class="search-field" placeholder="Ex: 60" style="width: 100px;">
+                    </div>
+                    <button onclick="calcularDose()" class="panel-link" style="background: var(--primary-green); color: #000; font-weight: bold; margin-top: 22px;">Calcular Dose</button>
+                </div>
+
+                <div id="resultadoDose" style="display: none; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(46, 204, 113, 0.3);">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="font-size: 2rem;">💊</div>
+                        <div>
+                            <span id="textoDose" style="font-size: 1.1rem; font-weight: bold; display: block; color: #fff;"></span>
+                            <span id="subtextoDose" style="font-size: 0.85rem; color: #94a3b8;"></span>
+                        </div>
+                    </div>
+                    <p id="avisoDinamico" style="margin-top: 15px; font-size: 0.75rem; color: #f1c40f; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;"></p>
+                </div>
+            </div>
         </section>
 
         <section class="faq-section">
@@ -417,149 +388,143 @@
             <div class="faq-item">
                 <button class="faq-question">O que é Tuberculose e quais os sintomas? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>É uma doença infecciosa e transmissível, causada pelo Mycobacterium tuberculosis ou bacilo de
-                        Koch, que afeta principalmente os pulmões, mas pode atingir outros órgãos. Os sintomas são tosse
-                        por mais de
-                        três semanas (seca ou com catarro), febre vespertina, sudorese noturna, perda de peso e cansaço.
-                    </p>
+                    <p>É uma doença infecciosa e transmissível, causada pelo Mycobacterium tuberculosis ou bacilo de Koch, que afeta principalmente os pulmões. Os sintomas são tosse por mais de três semanas (seca ou com catarro), febre vespertina, sudorese noturna e perda de peso.</p>
                 </div>
-            </div>
-
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">Quais exames solicitar na primeira consulta? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Devem ser solicitados o TRM-TB (Teste Rápido Molecular), Cultura para Micobactéria, Antibiograma,
-                        Baciloscopia e Teste de HIV.</p>
+                    <p>Devem ser solicitados o TRM-TB (Teste Rápido Molecular), Cultura para Micobactéria, Antibiograma, Baciloscopia e Teste de HIV.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">Qual o tempo mínimo de tosse para suspeição? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Para a população geral, tosse por 3 semanas ou mais. Para PVHIV ou pessoas em situação de rua,
-                        qualquer tempo de tosse.</p>
+                    <p>Para a população geral, tosse por 3 semanas ou mais. Para PVHIV (Pessoas Vivendo com HIV) ou pessoas em situação de rua, qualquer tempo de tosse já é critério para investigação.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">Tem cura? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Sim, a tuberculose tem cura. O tratamento é gratuito pelo SUS.</p>
+                    <p>Sim, a tuberculose tem cura. O tratamento é gratuito e oferecido integralmente pelo SUS.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">Como se transmite? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Pelo ar, quando a pessoa com a forma ativa da doença (pulmonar ou laríngea) tosse, espirra ou
-                        fala, liberando bacilos.</p>
+                    <p>Pelo ar, quando a pessoa com a forma ativa da doença (pulmonar ou laríngea) tosse, espirra ou fala, liberando os bacilos no ambiente.</p>
                 </div>
             </div>
 
             <div class="faq-item">
-                <button class="faq-question">Como é o tratamento?<span>+</span></button>
+                <button class="faq-question">Como é o tratamento? <span>+</span></button>
                 <div class="faq-answer">
-                    <p> Dura no mínimo 6 meses, com medicamentos diários (fase intensiva e fase de manutenção). Deve ser
-                        acompanhado pelo Tratamento Diretamente Observado (TDO).</p>
+                    <p>Dura no mínimo 6 meses, com medicamentos diários. Deve ser acompanhado preferencialmente pelo Tratamento Diretamente Observado (TDO) para garantir a adesão.</p>
                 </div>
             </div>
 
             <div class="faq-item">
-                <button class="faq-question">Tuberculose passa por abraço ou talheres?<span>+</span></button>
+                <button class="faq-question">O tratamento pode ser interrompido? <span>+</span></button>
                 <div class="faq-answer">
-                    <p> Não. A transmissão é apenas aérea.</p>
+                    <p>Nunca. A interrupção pode tornar o bacilo resistente aos antibióticos, o que torna a doença muito mais difícil de curar e aumenta o risco de óbito.</p>
                 </div>
             </div>
 
             <div class="faq-item">
-                <button class="faq-question">O tratamento pode ser interrompido?<span>+</span></button>
+                <button class="faq-question">Quando o paciente para de transmitir? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Nunca. A interrupção pode tornar o bacilo resistente aos medicamentos, tornando a doença mais
-                        difícil de curar.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">Quando o paciente para de transmitir?<span>+</span></button>
-                <div class="faq-answer">
-                    <p> Geralmente, após 15 dias a 3 semanas de tratamento correto, o risco de transmissão diminui
-                        drasticamente.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">O que é infecção latente?<span>+</span></button>
-                <div class="faq-answer">
-                    <p>A pessoa tem o bacilo no corpo, mas ele está inativo. Não apresenta sintomas e não transmite.</p>
+                    <p>Geralmente, após 15 a 21 dias de tratamento correto, a carga bacilar diminui drasticamente e o risco de transmissão torna-se muito baixo.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">Onde retirar a medicação em Campo Grande? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Nas Unidades Básicas de Saúde (UBS/UBSF) conforme o fluxo da rede municipal.</p>
+                    <p>Nas Unidades Básicas de Saúde (UBS/UBSF) de referência do paciente, conforme o fluxo da rede municipal da SESAU.</p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="frase-campanha efeito-brilho">
+        <div class="frase-campanha">
             "Sim! Podemos acabar com a tuberculose!"
             <span>(Dia Mundial da Tuberculose, 24 de março)</span>
         </div>
-
-        <div class="footer-logo">
-            <img src="logocve.png" alt="Logos Institucionais">
-        </div>
         <p>Gerência Técnica Municipal de Tuberculose | Vigilância Epidemiológica | SESAU CG - MS</p>
-        <p style="font-size : 0.7rem; margin-top: 5px; opacity: 0.5;">© 2026 Campo Grande - MS</p>
+        <p style="font-size: 0.7rem; margin-top: 5px; opacity: 0.5;">© 2026 Campo Grande - MS</p>
     </footer>
 
     <script>
-        // Lógica da Calculadora Corrigida
-        function calcularDatas() {
-            const dataStr = document.getElementById('dataInicio').value;
-            if (!dataStr) { alert("Por favor, selecione uma data."); return; }
+        function gerarPainelMonitoramento() {
+            const dataInput = document.getElementById('dataInicio').value;
+            if (!dataInput) { alert("Selecione a data."); return; }
+            const dataInicio = new Date(dataInput + "T12:00:00");
+            const hoje = new Date();
+            const dataAlta = new Date(dataInicio); dataAlta.setMonth(dataAlta.getMonth() + 6);
+            
+            let progresso = Math.round(((hoje - dataInicio) / (dataAlta - dataInicio)) * 100);
+            progresso = Math.max(0, Math.min(100, progresso));
 
-            const data = new Date(dataStr + "T12:00:00");
-            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            document.getElementById('resultadoMonitoramento').style.display = 'block';
+            document.getElementById('barraProgresso').style.width = progresso + "%";
+            document.getElementById('porcentagemTexto').innerText = progresso + "%";
 
-            const m2 = new Date(data); m2.setMonth(m2.getMonth() + 2);
-            const m4 = new Date(data); m4.setMonth(m4.getMonth() + 4);
-            const m6 = new Date(data); m6.setMonth(m6.getMonth() + 6);
+            const m2 = new Date(dataInicio); m2.setMonth(m2.getMonth() + 2);
+            const m4 = new Date(dataInicio); m4.setMonth(m4.getMonth() + 4);
+            const opt = { day: '2-digit', month: '2-digit', year: 'numeric' };
 
-            alert("Cronograma Previsto:\n\n" +
-                "📌 2º Mês: " + m2.toLocaleDateString('pt-BR', options) + "\n" +
-                "📌 4º Mês: " + m4.toLocaleDateString('pt-BR', options) + "\n" +
-                "🏁 Alta: " + m6.toLocaleDateString('pt-BR', options));
+            document.getElementById('datasCronograma').innerHTML = `
+                <div class="staff-item"><span class="staff-role">2º Mês (Controle)</span><span class="staff-name">${m2.toLocaleDateString('pt-BR', opt)}</span></div>
+                <div class="staff-item"><span class="staff-role">4º Mês (Controle)</span><span class="staff-name">${m4.toLocaleDateString('pt-BR', opt)}</span></div>
+                <div class="staff-item" style="border-color: var(--primary-blue)"><span class="staff-role">Previsão de Alta</span><span class="staff-name">${dataAlta.toLocaleDateString('pt-BR', opt)}</span></div>
+            `;
         }
 
-        // Filtro de Busca
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            document.querySelectorAll('.panel').forEach(panel => {
-                panel.style.display = panel.innerText.toLowerCase().includes(term) ? "block" : "none";
+        function calcularDose() {
+            const faixa = document.getElementById('faixaEtaria').value;
+            const peso = parseFloat(document.getElementById('pesoPaciente').value);
+            if (!peso || peso <= 0) { alert("Peso inválido."); return; }
+
+            let rec = ""; let esq = ""; let aviso = "";
+            if (faixa === "adulto") {
+                esq = "Esquema Básico (RHZE 150/75/400/275mg)";
+                if (peso <= 35) rec = "02 Comprimidos (RHZE)";
+                else if (peso <= 50) rec = "03 Comprimidos (RHZE)";
+                else rec = "04 Comprimidos (RHZE)";
+                aviso = "A prescrição final é de responsabilidade médica.";
+            } else {
+                esq = "Esquema Pediátrico (RHZ 75/50/150mg dispersível)";
+                if (peso <= 7) rec = "01 Comprimido dispersível";
+                else if (peso <= 11) rec = "1,5 Comprimido dispersível";
+                else rec = "02 a 03 Comprimidos (conforme peso exato)";
+                aviso = "A dosagem pediátrica requer atenção rigorosa ao peso.";
+            }
+            document.getElementById('textoDose').innerText = rec;
+            document.getElementById('subtextoDose').innerText = "Esquema: " + esq;
+            document.getElementById('avisoDinamico').innerText = aviso;
+            document.getElementById('resultadoDose').style.display = 'block';
+        }
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const ans = btn.nextElementSibling;
+                ans.style.maxHeight = ans.style.maxHeight ? null : ans.scrollHeight + "px";
             });
         });
 
-        // Lógica do FAQ (Acordeão)
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const answer = button.nextElementSibling;
-                const isOpen = answer.style.maxHeight;
-
-                // Fecha todos os outros
-                document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = null);
-
-                // Abre o clicado
-                answer.style.maxHeight = isOpen ? null : answer.scrollHeight + "px";
+        // Filtro de Busca Simples
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.panel').forEach(p => {
+                p.style.display = p.innerText.toLowerCase().includes(term) ? "flex" : "none";
             });
         });
     </script>
 </body>
-
 </html>
